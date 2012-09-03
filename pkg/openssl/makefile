@@ -53,7 +53,7 @@ build:
 		CC="$(CROSS_COMPILE)gcc" \
 		AR="$(CROSS_COMPILE)ar r" \
 		RANLIB="$(CROSS_COMPILE)ranlib" \
-		all build-shared $(muffle)
+		all build-shared 2>&1 $(muffle)
 
 stage:
 	$(Q) $(MAKE) -C $(SRC) \
