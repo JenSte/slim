@@ -77,22 +77,22 @@ STAGE = $(stage)/lib
 
 install:
 	$(Q) mkdir -p $(STAGE)
-	$(Q) cp $(SRC)/*-*.so $(STAGE)
-	$(Q) cp -d $(SRC)/*.so.[*0-9] $(STAGE)
+	$(Q) cp -f $(SRC)/*-*.so $(STAGE)
+	$(Q) cp -fd $(SRC)/*.so.[*0-9] $(STAGE)
 	$(Q) mkdir -p $(DST)
 	$(Q) echo Found libc in $(SRC)
-	$(Q) cp $(SRC)/*-*.so $(DST)
-	$(Q) cp -d $(SRC)/*.so.[*0-9] $(DST)
+	$(Q) cp -f $(SRC)/*-*.so $(DST)
+	$(Q) cp -fd $(SRC)/*.so.[*0-9] $(DST)
 	$(Q) for f in $(DST)/*-*.so ; do \
-		echo "\t" $$f ; \
-		$(CROSS_COMPILE)strip $$f ; \
+		echo -e "\t" $$f ; \
+		./strip-wrapper.sh $$f ; \
 	done
-	$(Q) cp -d $(CXX_SRC)/libstdc++.so* $(STAGE)
-	$(Q) cp -d $(CXX_SRC)/libstdc++.so* $(DST)
-	$(Q) $(CROSS_COMPILE)strip $(DST)/libstdc++.so*
-	$(Q) cp -d $(GCC_SRC)/libgcc_s.so* $(STAGE)
-	$(Q) cp -d $(GCC_SRC)/libgcc_s.so* $(DST)
-	$(Q) $(CROSS_COMPILE)strip $(DST)/libgcc_s.so* || true
+	$(Q) cp -fd $(CXX_SRC)/libstdc++.so* $(STAGE)
+	$(Q) cp -fd $(CXX_SRC)/libstdc++.so* $(DST)
+	$(Q) ./strip-wrapper.sh $(DST)/libstdc++.so*
+	$(Q) cp -fd $(GCC_SRC)/libgcc_s.so* $(STAGE)
+	$(Q) cp -fd $(GCC_SRC)/libgcc_s.so* $(DST)
+	$(Q) ./strip-wrapper.sh $(DST)/libgcc_s.so* || true
 
 clean:
 	$(Q) true
