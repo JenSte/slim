@@ -1,0 +1,69 @@
+#
+# Board Settings
+#
+CONFIG_karch="arm"
+CONFIG_cflags="-O2"
+CONFIG_ac_target="$(CROSS_COMPILE:-=)"
+CONFIG_essential=y
+
+#
+# Software Packages
+#
+
+#
+# libraries
+#
+# CONFIG_libpng is not set
+# CONFIG_expat is not set
+# CONFIG_boost is not set
+# CONFIG_tslib is not set
+# CONFIG_libdaemon is not set
+CONFIG_glibc=y
+CONFIG_zlib=y
+# CONFIG_qt is not set
+
+#
+# main
+#
+# CONFIG_mtd-utils is not set
+CONFIG_rpi_boot=y
+CONFIG_busybox=y
+CONFIG_linux=y
+# CONFIG_fbv is not set
+CONFIG_basefiles=y
+
+#
+# networking
+#
+# CONFIG_xcache is not set
+CONFIG_openssl=y
+CONFIG_openssh=y
+# CONFIG_php is not set
+CONFIG_ethtool=y
+CONFIG_networking=y
+# CONFIG_vsftpd is not set
+# CONFIG_linuxptp is not set
+# CONFIG_fcgi is not set
+# CONFIG_lighttpd is not set
+# CONFIG_avahi is not set
+# CONFIG_ntp is not set
+
+#
+# Image Options
+#
+
+#
+# Image Options
+#
+CONFIG_manifest=y
+CONFIG_startup=y
+CONFIG_tftp_dir="/home/tftp"
+
+#
+# Image Types
+#
+# CONFIG_initrd is not set
+# CONFIG_jffs2 is not set
+CONFIG_rpisd=y
+# CONFIG_romfs is not set
+# CONFIG_ubifs is not set

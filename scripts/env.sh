@@ -32,6 +32,9 @@ case $BOARD in
 	nslu)
 		CROSS_COMPILE=armeb-unknown-linux-gnueabi-
 		;;
+	rpi)
+		CROSS_COMPILE=arm-unknown-linux-gnueabi-
+		;;
 	*)
 		CROSS_COMPILE=
 		;;
@@ -50,6 +53,8 @@ append()
 
 # Crosstool compiler for arm ixp4xx
 append /opt/x-tools/armeb-unknown-linux-gnueabi/bin
+# Crosstool compiler for the Raspberry Pi
+append /opt/x-tools/arm-unknown-linux-gnueabi/bin
 # Freescale M5234BCC
 append /opt/x-tools/freescale-coldfire-2011.09/bin
 # Freescale i.MX35

@@ -9,6 +9,11 @@ TGZ = $(PKG).tgz
 SRC = $(build)/$(PKG)
 DST =
 
+ifeq ($(BOARD),rpi)
+URL = git://github.com/raspberrypi/linux.git
+VER = rpi-3.2.27
+endif
+
 LICENSE  = GPL2
 LICFILE  = $(SRC)/COPYING
 UPSTREAM =

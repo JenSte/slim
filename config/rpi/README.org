@@ -1,0 +1,30 @@
+
+* Introduction
+
+  The 'rpi' board supports the "Raspberry Pi", a credit-card sized low
+  cost linux computer. The SLIM board support was developed using a
+  cross compiler built with crosstool-ng. Detailed instructions on how
+  to obtain a cross compiler can be found here:
+
+  http://www.bootc.net/archives/2012/05/26/how-to-build-a-cross-compiler-for-your-raspberry-pi/
+
+* Compiling the Image
+
+  - export BOARD=rpi
+  - . scripts/env.sh
+  - make
+
+* Installing the Image
+
+  Insert a SD card into your development machine and use the following
+  command to copy the image onto it:
+
+  - dd if=rpi/rpi-sdcard.img of=/dev/sdX
+
+  (Replace /dev/sdX with the device node of the SD card. You can use
+  'dmesg' to find out what device node to use.)
+
+* Booting the Image
+
+  Insert the SD card with the image on it into the Raspberry Pi and
+  power on the device.
