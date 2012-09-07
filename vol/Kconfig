@@ -89,6 +89,13 @@ config jffs2_ext
 
 endif
 
+config rpisd
+	bool "Rasperry Pi SD card image"
+	default n
+	select rpi_boot
+	help
+	 Create a SD card image for the Raspberry Pi.
+
 menuconfig romfs
 	prompt "romfs"
 	default n

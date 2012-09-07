@@ -57,6 +57,7 @@ export fetch  = $(pwd)/scripts/fetch.sh
 export gitbase= $(pwd)/scripts/gitbase.awk
 export needed = $(pwd)/scripts/needed.sh
 export romdev = $(pwd)/scripts/romdev.sh
+export rpisd  = $(pwd)/scripts/rpisd.sh
 export start  = $(pwd)/scripts/start.sh -d $(stage)/etc
 export unpack = $(pwd)/scripts/unpack.sh
 
@@ -116,7 +117,7 @@ define vol_template
 vol-$$(CONFIG_$(1)) += $(1)
 endef
 
-all_vols := manifest startup initrd jffs2 romfs ubifs
+all_vols := manifest startup initrd jffs2 rpisd romfs ubifs
 
 $(foreach v, $(all_vols), $(eval $(call vol_template,$(v))))
 
