@@ -1,0 +1,8 @@
+*.swp
+/download
+/.config.*
+/generic
+/imx35pdk
+/lite5200
+/p2020rdb
+/rpi
