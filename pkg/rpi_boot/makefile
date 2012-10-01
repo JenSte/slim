@@ -47,6 +47,7 @@ install:
 	$(Q) cp $(SRC)/boot/$(START)     $(imgdir)/boot/start.elf
 	$(Q) cp $(imgdir)/rpi-zImage     $(imgdir)/boot/kernel.img
 	$(Q) cp cmdline.txt              $(imgdir)/boot
+	$(Q) cp config.txt               $(imgdir)/boot
 	# create the mountpoint for the boot partition
 	$(Q) mkdir -p $(rootfs)/boot
 
