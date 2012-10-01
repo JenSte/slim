@@ -19,5 +19,18 @@ IMAGE = $(imgdir)/$(BOARD)-sdcard.img
 all:
 	$(Q) $(rpisd) $(IMAGE) $(imgdir)/boot $(imgdir)/rootfs
 
+# use a udev rule like this to make your SD card writable as a
+# user of the 'developer' group:
+#
+# $ cat /etc/udev/rules.d/50-sdcard.rules
+# KERNEL=="sd?", SUBSYSTEM=="block", SUBSYSTEMS=="usb", ATTRS{serial}=="<serial no. of your card reader>", GROUP="developer", SYMLINK+="sdcard"
+
+SDCARD := /dev/sdcard
+
 install:
-	$(Q) true
+	if [ ! -b $(SDCARD) ]; then \
+		echo "error: $(SDCARD) not present"; \
+	else \
+		echo "copying image to $(SDCARD)"; \
+		dd if=rpi/rpi-sdcard.img of=/dev/sdcard bs=4096; \
+	fi
