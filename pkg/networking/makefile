@@ -30,6 +30,7 @@ build:
 stage:
 install:
 	$(Q) $(start) -n 200 -f networking.init
+	$(Q) [ -f $(etc)/resolv.conf ] && cp $(etc)/resolv.conf $(rootfs)/etc
 
 clean:
 distclean: clean
