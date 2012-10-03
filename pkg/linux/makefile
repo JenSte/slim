@@ -68,8 +68,11 @@ build:
 	$(Q) $(MAKE) $(J) -C $(SRC) ARCH=$(karch) all $(KERNEL)
 
 stage:
-	$(Q) $(MAKE) $(J) -C $(SRC) ARCH=$(karch) INSTALL_HDR_PATH=$(stage)/usr \
-		headers_install
+	$(Q) TMP=`mktemp -d`; \
+		$(MAKE) $(J) -C $(SRC) ARCH=$(karch) INSTALL_HDR_PATH=$$TMP \
+		headers_install; \
+		cp -r $$TMP/include/* $(stage)/usr/include; \
+		rm -r $$TMP
 
 install:
 	$(Q) grep -q CONFIG_MODULES=y $(SRC)/.config ; \
